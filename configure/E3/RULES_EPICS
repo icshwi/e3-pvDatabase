@@ -4,12 +4,13 @@
 .PHONY: epics epics-clean
 
 epics:
-	$(QUIET)echo "EPICS_BASE=$(EPICS_BASE)"        > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "ASYN=$(M_ASYN)"                  > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "SSCAN=$(M_SSCAN)"               >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "SNCSEQ=$(M_SNCSEQ)"             >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-	$(QUIET)echo "CHECK_RELEASE = YES"              > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE
-#	$(QUIET)echo "INSTALL_LOCATION=$(M_DEVLIB2)"  >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE
+	$(QUIET)echo "PVDATA=$(M_PVDATA)"              > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local
+	$(QUIET)echo "PVACCESS=$(M_PVACCESS)"         >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local		
+	$(QUIET)echo "EPICS_BASE=$(EPICS_BASE)"       >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local
+	$(QUIET)echo "CHECK_RELEASE = YES"             > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "-include $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_QSRV_VERSION"  >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+#	$(QUIET)echo "WITH_COVERAGE = 1"                >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "INSTALL_LOCATION=$(M_PVDATABASE)" >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
 	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH)"
 
 epics-clean:
