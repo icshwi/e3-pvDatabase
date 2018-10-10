@@ -1,0 +1,13 @@
+diff --git src/database/pvDatabase.cpp src/database/pvDatabase.cpp
+index e696034..70b0c98 100644
+--- src/database/pvDatabase.cpp
++++ src/database/pvDatabase.cpp
+@@ -35,7 +35,7 @@ PVDatabase::PVDatabase()
+ 
+ PVDatabase::~PVDatabase()
+ {
+-cout << "PVDatabase::~PVDatabase()\n";
++  //cout << "PVDatabase::~PVDatabase()\n";
+ }
+ 
+ void PVDatabase::lock() {
