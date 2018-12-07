@@ -18,4 +18,3 @@ epics:
 #	$(QUIET)echo "WITH_COVERAGE = 1"                >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
 	$(QUIET)echo "INSTALL_LOCATION=$(M_PVDATABASE)" >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
 	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH)"
-

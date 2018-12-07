@@ -1,7 +1,4 @@
-
->>
-Update Log Time    : 2018Dec07-2344-01CET
->>
+Update Log Time    : 2018Dec07-2328-05CET
 Script is used     : e3TemplateGenerator
 Script Path        : /home/jhlee/ics_gitsrc/e3-tools/e3TemplateGenerator
 User               : jhlee
@@ -11,4 +8,4 @@ EPICS_MODULE_NAME  :                         pvDatabase
 E3 MODULE VERSION  :                              4.3.0
 EPICS BASE VERSION :                        base-3.15.5
 E3 REQUIRE VERSION :                              3.0.2
->>
+
