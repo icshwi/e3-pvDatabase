@@ -1,0 +1,20 @@
+#
+.PHONY: db hdrs
+
+db: conf
+	$(QUIET) $(E3_MODULE_MAKE_CMDS) db
+
+hdrs:
+	$(SUDO) install -m 755 -d $(E3_MODULES_INSTALL_LOCATION_INC)/pv
+	cd $(E3_MODULES_INSTALL_LOCATION_INC) && $(SUDO) mv *.h pv/
+
+.PHONY: epics
+epics:
+	$(QUIET)echo "PVDATA=$(M_PVDATA)"              > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local
+	$(QUIET)echo "PVACCESS=$(M_PVACCESS)"         >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local		
+	$(QUIET)echo "EPICS_BASE=$(EPICS_BASE)"       >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE.local
+	$(QUIET)echo "CHECK_RELEASE = YES"             > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "-include $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_QSRV_VERSION"  >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+#	$(QUIET)echo "WITH_COVERAGE = 1"                >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(QUIET)echo "INSTALL_LOCATION=$(M_PVDATABASE)" >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE.local
+	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH)"
